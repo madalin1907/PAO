@@ -1,7 +1,7 @@
 package main.java.laborator3.arrays;
 
 public class MyArrayList {
-    public float[] array;
+    private float[] array;
 
     public MyArrayList() {
         array = new float[10];
