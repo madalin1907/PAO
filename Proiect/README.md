@@ -1,8 +1,8 @@
-<b>Project Theme:<\b> Food Delivery
+<b>Project Theme:<b> Food Delivery
 
 <br>
 
-<b>Object Types:<\b>
+<b>Object Types:<b>
 <li>Address</li>
 <li>Client</li>
 <li>Courier</li>
@@ -10,12 +10,12 @@
 <li>Drink</li>
 <li>Order</li>
 <li>Person</li>
-<li>Product<li>
+<li>Product</li>
 <li>Restaurant</li>
 
 <br>
 
-<b>Actions / Interogations:<\b>
+<b>Actions / Interogations:<b>
 01. Display all restaurants
 02. Add a new restaurant
 03. Delete a restaurant
