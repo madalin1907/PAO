@@ -4,6 +4,7 @@ import models.*;
 import java.util.List;
 import java.util.Scanner;
 
+// TODO: modify after implementing ProductService
 public class DishService {
     private static final Scanner scanner = new Scanner(System.in);
     public static void displayDishes(List<Dish> dishes) {

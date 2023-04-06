@@ -3,6 +3,8 @@ import models.*;
 
 import java.util.List;
 import java.util.Scanner;
+
+// TODO: modify after implementing ProductService
 public class DrinkService {
     private static final Scanner scanner = new Scanner(System.in);
     public static void displayDrinks(List<Drink> drinks) {
