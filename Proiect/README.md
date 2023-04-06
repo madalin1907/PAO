@@ -20,9 +20,9 @@
 02. Add a new restaurant
 03. Delete a restaurant
 04. Sort restaurants by rating
-05. Display all foods
-06. Add a new food
-07. Delete a food
+05. Display all dishes
+06. Add a new dish
+07. Delete adish
 09. Display all drinks
 10. Add a new drink
 11. Delete a drink

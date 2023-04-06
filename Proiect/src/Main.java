@@ -1,31 +1,155 @@
+import exceptions.CustomException;
 import models.*;
 import services.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Main {
+    private Main() {
+    }
+
     public static void main(String[] args) {
-        // instantiate some restaurants
-        Restaurant restaurant1 = new Restaurant("McDonalds", new Address("Romania", "Bucuresti, Sector 3", "Calea Vitan", "23", "002342"), 4.5);
-        Restaurant restaurant2 = new Restaurant("KFC", new Address("Romania", "Bucuresti, Sector 3", "Calea Vitan", "24", "002342"), 4.2);
-        Restaurant restaurant3 = new Restaurant("Pizza Hut", new Address("Romania", "Bucuresti, Sector 2", "Sos. Colentina", "123", "032142"), 4.0);
+        Main app = new Main();
+        while (true) {
+            app.showMenu();
+            int option = app.readOption();
+            app.executeOption(option);
+        }
+    }
 
-        // instantiate some clients
-        Client client1 = new Client("Andrei", "1111111111", "andrei@yahoo.ro", new Address("Romania", "Bucuresti, Sector 1", "Calea Victoriei", "1", "001234"));
-        Client client2 = new Client("Marian", "2222222222", "marian@yahoo.ro", new Address("Romania", "Bucuresti, Sector 1", "Calea Dorobanti", "2", "002345"));
+    private final Scanner scanner = new Scanner(System.in);
 
-        // instantiate some couriers
-        Courier courier1 = new Courier("John", "1231231234", "john@yahoo.y", "4.5", "Car");
-        Courier courier2 = new Courier("Tom", "2342342345", "tom@yahoo.ro", "4.0", "Scooter");
-        Courier courier3 = new Courier("Bob", "3453213456", "bob@yahoo.ro", "3.5", "Bike");
+    private final RestaurantService restaurantService = new RestaurantService();
+    private final DishService dishService = new DishService();
+    private final DrinkService drinkService = new DrinkService();
 
-        // instantiate some drinks
-        Drink drink = new Drink("Coca-Cola", 5.0, "Coca-Cola is a carbonated soft drink produced by The Coca-Cola Company.", false, 500);
-        Drink drink2 = new Drink("Fanta", 5.0, "Fanta is a brand of fruit-flavored carbonated soft drinks created by Coca-Cola in Germany in 1940.", false, 500);
-        Drink drink3 = new Drink("Irish Coffee", 10.0, "Irish coffee is a hot drink consisting of coffee, Irish whiskey, and sugar, topped with thick cream.", true, 300);
+    private List<Restaurant> restaurants = new ArrayList<>();
+    private List<Dish> dishes = new ArrayList<>();
+    private List<Drink> drinks = new ArrayList<>();
 
-        // instantiate some dishes
-        Dish dish1 = new Dish("Cheeseburger", 31.99, "A tasty sandwich with beef, cheese and sauces", new String[]{"bread", "beef", "cheese", "mayo", "ketchup"}, 500);
-        Dish dish2 = new Dish("Chicken Wings", 22.99, "A tasty dish with chicken wings and sauces", new String[]{"chicken wings", "mayo", "ketchup"}, 500);
-        Dish dish3 = new Dish("Pizza Diavola", 29.99, "A tasty pizza with tomato sauce, mozzarella, spicy salami and oregano", new String[]{"tomato sauce", "mozzarella", "spicy salami", "oregano", "olives"}, 500);
+    private void showMenu() {
+        System.out.println("\nWelcome to our Food Delivery App! Please enter a number to choose an option:");
+        System.out.println("1. Display all restaurants.");
+        System.out.println("2. Add a new restaurant.");
+        System.out.println("3. Delete a restaurant.");
+        System.out.println("4. Sort restaurants by rating (descending).");
+        System.out.println("5. Display all dishes.");
+        System.out.println("6. Add a new dish.");
+        System.out.println("7. Delete a dish.");
+        System.out.println("8. Display all drinks.");
+        System.out.println("9. Add a new drink.");
+        System.out.println("10. Delete a drink.");
+        System.out.println("11. Display all clients.");
+        System.out.println("12. Add a new client.");
+        System.out.println("13. Delete a client.");
+        System.out.println("14. Display all couriers.");
+        System.out.println("15. Add a new courier.");
+        System.out.println("16. Delete a courier.");
+        System.out.println("17. Display all orders.");
+        System.out.println("18. Display all orders for a specific client.");
+        System.out.println("19. Display all orders for a specific restaurant.");
+        System.out.println("20. Add a new order.");
+        System.out.println("21. Delete an order.");
+        System.out.println("22. Exit.");
+        System.out.print("Please enter a number:");
+    }
 
+    public void executeOption(int option) {
+        switch (option) {
+            case 1:
+                RestaurantService.displayRestaurants(restaurants);
+                break;
+            case 2:
+                RestaurantService.addRestaurant(restaurants);
+                break;
+            case 3:
+                RestaurantService.deleteRestaurant(restaurants);
+                break;
+            case 4:
+                RestaurantService.sortRestaurantsByRating(restaurants);
+                break;
+            case 5:
+                DishService.displayDishes(dishes);
+                break;
+            case 6:
+                DishService.addDish(dishes);
+                break;
+            case 7:
+                DishService.deleteDish(dishes);
+                break;
+            case 8:
+                DrinkService.displayDrinks(drinks);
+                break;
+            case 9:
+                DrinkService.addDrink(drinks);
+                break;
+            case 10:
+                DrinkService.deleteDrink(drinks);
+                break;
+            case 11:
+                System.out.println("Display all clients.");
+                break;
+            case 12:
+                System.out.println("Add a new client.");
+                break;
+            case 13:
+                System.out.println("Delete a client.");
+                break;
+            case 14:
+                System.out.println("Display all couriers.");
+                break;
+            case 15:
+                System.out.println("Add a new courier.");
+                break;
+            case 16:
+                System.out.println("Delete a courier.");
+                break;
+            case 17:
+                System.out.println("Display all orders.");
+                break;
+            case 18:
+                System.out.println("Display all orders for a specific client.");
+                break;
+            case 19:
+                System.out.println("Display all orders for a specific restaurant.");
+                break;
+            case 20:
+                System.out.println("Add a new order.");
+                break;
+            case 21:
+                System.out.println("Delete an order.");
+                break;
+            case 22:
+                System.out.println("Thank you for choosing our app. Goodbye!");
+                System.exit(0);
+        }
+    }
+
+    private int readOption() {
+        int option = -1;
+
+        do {
+            try {
+                option = readInt();
+                if (option < 1 || option > 22) {
+                    System.out.print("Invalid option! Try again: ");
+                }
+            } catch (CustomException exception) {
+                System.out.print("Invalid option! Try again: ");
+            }
+        } while (option < 1 || option > 22);
+
+        return option;
+    }
+
+    private int readInt() throws CustomException {
+        String line = scanner.next();
+        if (line.matches("^\\d+$")) {
+            return Integer.parseInt(line);
+        } else {
+            throw new CustomException("Invalid number");
+        }
     }
 }
