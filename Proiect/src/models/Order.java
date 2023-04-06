@@ -6,6 +6,7 @@ public class Order {
     private static int idCounter = 0;
     private int id;
     private Client client;
+    private Courier courier;
     private Restaurant restaurant;
     private Product[] products;
     private Double totalPrice;
@@ -13,9 +14,10 @@ public class Order {
 
     public Order() {}
 
-    public Order(Client client, Restaurant restaurant, Product[] products, Double totalPrice, String status) {
+    public Order(Client client, Courier courier, Restaurant restaurant, Product[] products, Double totalPrice, String status) {
         this.id = ++idCounter;
         this.client = client;
+        this.courier = courier;
         this.restaurant = restaurant;
         this.products = products;
         this.totalPrice = totalPrice;
@@ -36,6 +38,14 @@ public class Order {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public Courier getCourier() {
+        return courier;
+    }
+
+    public void setCourier(Courier courier) {
+        this.courier = courier;
     }
 
     public Restaurant getRestaurant() {
@@ -77,6 +87,7 @@ public class Order {
                 ", totalPrice=" + totalPrice +
                 ", status=" + status +
                 ",\n  client=" + client +
+                ",\n  courier=" + courier +
                 ",\n  restaurant=" + restaurant +
                 ",\n  products=" + Arrays.toString(products) +
                 '}';

@@ -18,7 +18,7 @@ public class DrinkService {
     }
 
     public static void addDrink(List<Drink> drinks) {
-        System.out.println("\nAdd a new drink:");
+        System.out.println("\n--Adding a new drink--");
 
         System.out.print("Enter the name of the drink:");
         String name = scanner.nextLine();

@@ -19,10 +19,11 @@ public class RestaurantService {
     }
 
     public static void addRestaurant(List<Restaurant> restaurants) {
-        System.out.println("\nAdd a new restaurant:");
+        System.out.println("\n--Adding a new restaurant--");
 
         System.out.print("Enter the name of the restaurant:");
         String name = scanner.nextLine();
+        System.out.println("--Entering the address of the restaurant--");
         System.out.print("Enter the country of the restaurant:");
         String country = scanner.nextLine();
         System.out.print("Enter the city of the restaurant:");
@@ -99,5 +100,14 @@ public class RestaurantService {
 
         System.out.print("\nRestaurants sorted successfully.");
         displayRestaurants(restaurants);
+    }
+
+    public static Restaurant getRestaurantById(List<Restaurant> restaurants, int id) {
+        for (Restaurant restaurant : restaurants) {
+            if (restaurant.getId() == id) {
+                return restaurant;
+            }
+        }
+        return null;
     }
 }

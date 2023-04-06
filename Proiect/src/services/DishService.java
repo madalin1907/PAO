@@ -19,7 +19,7 @@ public class DishService {
     }
 
     public static void addDish(List<Dish> dishes) {
-        System.out.println("\nAdd a new dish:");
+        System.out.println("\n--Adding a new dish--");
 
         System.out.print("Enter the name of the dish:");
         String name = scanner.nextLine();

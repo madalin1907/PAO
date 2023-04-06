@@ -21,13 +21,12 @@ public class Main {
 
     private final Scanner scanner = new Scanner(System.in);
 
-    private final RestaurantService restaurantService = new RestaurantService();
-    private final DishService dishService = new DishService();
-    private final DrinkService drinkService = new DrinkService();
-
-    private List<Restaurant> restaurants = new ArrayList<>();
-    private List<Dish> dishes = new ArrayList<>();
-    private List<Drink> drinks = new ArrayList<>();
+    private final List<Restaurant> restaurants = new ArrayList<>();
+    private final List<Dish> dishes = new ArrayList<>();
+    private final List<Drink> drinks = new ArrayList<>();
+    private final List<Client> clients = new ArrayList<>();
+    private final List<Courier> couriers = new ArrayList<>();
+    private final List<Order> orders = new ArrayList<>();
 
     private void showMenu() {
         System.out.println("\nWelcome to our Food Delivery App! Please enter a number to choose an option:");
@@ -48,10 +47,10 @@ public class Main {
         System.out.println("15. Add a new courier.");
         System.out.println("16. Delete a courier.");
         System.out.println("17. Display all orders.");
-        System.out.println("18. Display all orders for a specific client.");
-        System.out.println("19. Display all orders for a specific restaurant.");
-        System.out.println("20. Add a new order.");
-        System.out.println("21. Delete an order.");
+        System.out.println("18. Add a new order.");
+        System.out.println("19. Delete an order.");
+        System.out.println("20. Display all orders for a specific client.");
+        System.out.println("21. Display all orders for a specific restaurant.");
         System.out.println("22. Exit.");
         System.out.print("Please enter a number:");
     }
@@ -89,40 +88,44 @@ public class Main {
                 DrinkService.deleteDrink(drinks);
                 break;
             case 11:
-                System.out.println("Display all clients.");
+                ClientService.displayClients(clients);
                 break;
             case 12:
-                System.out.println("Add a new client.");
+                ClientService.addClient(clients);
                 break;
             case 13:
-                System.out.println("Delete a client.");
+                ClientService.deleteClient(clients);
                 break;
             case 14:
-                System.out.println("Display all couriers.");
+                CourierService.displayCouriers(couriers);
                 break;
             case 15:
-                System.out.println("Add a new courier.");
+                CourierService.addCourier(couriers);
                 break;
             case 16:
-                System.out.println("Delete a courier.");
+                CourierService.deleteCourier(couriers);
                 break;
             case 17:
-                System.out.println("Display all orders.");
+                OrderService.displayOrders(orders);
                 break;
             case 18:
-                System.out.println("Display all orders for a specific client.");
+//                List<Product> allProducts = new ArrayList<>();
+//                allProducts.addAll(dishes);
+//                allProducts.addAll(drinks);
+//                OrderService.addOrder(orders, clients, couriers, restaurants, allProducts);
+                System.out.println("\n[NOT IMPLEMENTED YET] Add a new order");
                 break;
             case 19:
-                System.out.println("Display all orders for a specific restaurant.");
+                System.out.println("\n[NOT IMPLEMENTED YET] Delete an order");
                 break;
             case 20:
-                System.out.println("Add a new order.");
+                System.out.println("\n[NOT IMPLEMENTED YET] Display all orders for a specific client");
                 break;
             case 21:
-                System.out.println("Delete an order.");
+                System.out.println("\n[NOT IMPLEMENTED YET] Display all orders for a specific restaurant");
                 break;
             case 22:
-                System.out.println("Thank you for choosing our app. Goodbye!");
+                System.out.println("\nThank you for choosing our app. Goodbye!");
                 System.exit(0);
         }
     }

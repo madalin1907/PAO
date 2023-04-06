@@ -3,12 +3,12 @@ package models;
 public class Courier extends Person{
     private static int idCounter = 0;
     private int id;
-    private String rating;
+    private Double rating;
     private String vehicle;
 
     public Courier() {}
 
-    public Courier(String name, String phoneNumber, String email, String rating, String vehicle) {
+    public Courier(String name, String phoneNumber, String email, Double rating, String vehicle) {
         super(name, phoneNumber, email);
         this.id = ++idCounter;
         this.rating = rating;
@@ -23,11 +23,11 @@ public class Courier extends Person{
         this.id = id;
     }
 
-    public String getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 
