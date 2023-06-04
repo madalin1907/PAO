@@ -1,244 +1,27 @@
 package services;
-import models.*;
 
-import java.util.List;
-import java.util.Scanner;
+import repositories.DishRepository;
 
-// TODO: modify after implementing ProductService
 public class DishService {
-    private static final Scanner scanner = new Scanner(System.in);
-    public static void displayDishes(List<Dish> dishes) {
-        if (dishes.isEmpty()) {
-            System.out.println("\nThere are no dishes to display.");
-            return;
-        }
+    DishRepository dishRepository = new DishRepository();
 
-        System.out.println("\nList of current dishes:");
-        for (Dish dish : dishes) {
-            System.out.println(dish);
-        }
+    public void displayDishes() {
+        System.out.println("\nYou chosed \"Display all dishes\" option.");
+        dishRepository.displayDishes();
     }
 
-    public static void addDish(List<Dish> dishes) {
-        System.out.println("\n--Adding a new dish--");
-
-        System.out.print("Enter the name of the dish:");
-        String name = scanner.nextLine();
-        while (name.isEmpty()) {
-            System.out.print("Invalid input. Please enter a name:");
-            name = scanner.nextLine();
-        }
-
-        System.out.print("Enter the price of the dish:");
-        double price;
-        do {
-            try {
-                price = scanner.nextDouble();
-                if (price <= 0) {
-                    throw new Exception();
-                }
-                break;
-            } catch (Exception e) {
-                System.out.print("Invalid input. Please enter a double greater than 0:");
-                scanner.nextLine();
-            }
-        } while (true);
-        scanner.nextLine();
-
-        System.out.print("Enter the description of the dish:");
-        String description = scanner.nextLine();
-        while (description.isEmpty()) {
-            System.out.print("Invalid input. Please enter a description:");
-            description = scanner.nextLine();
-        }
-
-        System.out.print("Enter the number of ingredients:");
-        int numberOfIngredients;
-        do {
-            try {
-                numberOfIngredients = scanner.nextInt();
-                if (numberOfIngredients <= 0) {
-                    throw new Exception();
-                }
-                break;
-            } catch (Exception e) {
-                System.out.print("Invalid input. Please enter an integer greater than 0:");
-                scanner.nextLine();
-            }
-        } while (true);
-        scanner.nextLine();
-
-        String[] ingredients = new String[numberOfIngredients];
-        for (int i = 0; i < numberOfIngredients; i++) {
-            System.out.print("Enter the name of the ingredient:");
-            ingredients[i] = scanner.nextLine();
-            while (ingredients[i].isEmpty()) {
-                System.out.print("Invalid input. Please enter an ingredient:");
-                ingredients[i] = scanner.nextLine();
-            }
-        }
-
-        System.out.print("Enter the weight of the dish (in grams):");
-        int weight;
-        do {
-            try {
-                weight = scanner.nextInt();
-                if (weight <= 0) {
-                    throw new Exception();
-                }
-                break;
-            } catch (Exception e) {
-                System.out.print("Invalid input. Please enter an integer greater than 0:");
-                scanner.nextLine();
-            }
-        } while (true);
-        scanner.nextLine();
-
-        Dish dish = new Dish(name, price, description, ingredients, weight);
-        dishes.add(dish);
-        System.out.println("\nDish added successfully.");
+    public void addDish() {
+        System.out.println("\nYou chosed \"Add a new dish\" option.");
+        dishRepository.addDish();
     }
 
-    public static void updateDish(List<Dish> dishes) {
-        if (dishes.isEmpty()) {
-            System.out.println("\nThere are no dishes to update.");
-            return;
-        }
-
-        displayDishes(dishes);
-        System.out.print("Enter the id of the dish you want to update:");
-
-        int id;
-        do {
-            try {
-                id = scanner.nextInt();
-                break;
-            }catch (Exception e) {
-                System.out.print("Invalid input. Please enter a number:");
-                scanner.nextLine();
-            }
-        } while (true);
-        scanner.nextLine();
-
-        for (Dish dish : dishes) {
-            if (dish.getId() == id) {
-                System.out.println("\n--Updating dish with id " + id + "--");
-
-                System.out.print("Enter the name of the dish:");
-                String name = scanner.nextLine();
-                while (name.isEmpty()) {
-                    System.out.print("Invalid input. Please enter a name:");
-                    name = scanner.nextLine();
-                }
-
-                System.out.print("Enter the price of the dish:");
-                double price;
-                do {
-                    try {
-                        price = scanner.nextDouble();
-                        if (price <= 0) {
-                            throw new Exception();
-                        }
-                        break;
-                    } catch (Exception e) {
-                        System.out.print("Invalid input. Please enter a double greater than 0:");
-                        scanner.nextLine();
-                    }
-                } while (true);
-                scanner.nextLine();
-
-                System.out.print("Enter the description of the dish:");
-                String description = scanner.nextLine();
-                while (description.isEmpty()) {
-                    System.out.print("Invalid input. Please enter a description:");
-                    description = scanner.nextLine();
-                }
-
-                System.out.print("Enter the number of ingredients:");
-                int numberOfIngredients;
-                do {
-                    try {
-                        numberOfIngredients = scanner.nextInt();
-                        if (numberOfIngredients <= 0) {
-                            throw new Exception();
-                        }
-                        break;
-                    } catch (Exception e) {
-                        System.out.print("Invalid input. Please enter an integer greater than 0:");
-                        scanner.nextLine();
-                    }
-                } while (true);
-                scanner.nextLine();
-
-                String[] ingredients = new String[numberOfIngredients];
-                for (int i = 0; i < numberOfIngredients; i++) {
-                    System.out.print("Enter the name of the ingredient:");
-                    ingredients[i] = scanner.nextLine();
-                    while (ingredients[i].isEmpty()) {
-                        System.out.print("Invalid input. Please enter an ingredient:");
-                        ingredients[i] = scanner.nextLine();
-                    }
-                }
-
-                System.out.print("Enter the weight of the dish (in grams):");
-                int weight;
-                do {
-                    try {
-                        weight = scanner.nextInt();
-                        if (weight <= 0) {
-                            throw new Exception();
-                        }
-                        break;
-                    } catch (Exception e) {
-                        System.out.print("Invalid input. Please enter an integer greater than 0:");
-                        scanner.nextLine();
-                    }
-                } while (true);
-                scanner.nextLine();
-
-                dish.setName(name);
-                dish.setPrice(price);
-                dish.setDescription(description);
-                dish.setIngredients(ingredients);
-                dish.setWeight(weight);
-                System.out.println("\nDish updated successfully.");
-                return;
-            }
-        }
-
-        System.out.println("\nDish not found.");
+    public void updateDish() {
+        System.out.println("\nYou chosed \"Update a dish\" option.");
+        dishRepository.updateDish();
     }
 
-
-    public static void deleteDish(List<Dish> dishes) {
-        if (dishes.isEmpty()) {
-            System.out.println("\nThere are no dishes to delete.");
-            return;
-        }
-
-        displayDishes(dishes);
-        System.out.print("Enter the id of the dish you want to delete:");
-
-        int id;
-        do {
-            try {
-                id = scanner.nextInt();
-                break;
-            }catch (Exception e) {
-                System.out.print("Invalid input. Please enter a number:");
-                scanner.nextLine();
-            }
-        } while (true);
-        scanner.nextLine();
-
-        for (Dish dish : dishes) {
-            if (dish.getId() == id) {
-                dishes.remove(dish);
-                System.out.println("\nDish deleted successfully.");
-                return;
-            }
-        }
-
-        System.out.println("\nDish not found.");
+    public void deleteDish() {
+        System.out.println("\nYou chosed \"Delete a dish\" option.");
+        dishRepository.deleteDish();
     }
 }

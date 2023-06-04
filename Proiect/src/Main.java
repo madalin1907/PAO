@@ -1,4 +1,5 @@
 import exceptions.CustomException;
+
 import models.*;
 import services.*;
 
@@ -21,11 +22,12 @@ public class Main {
         }
     }
 
+    DishService dishService = new DishService();
+    DrinkService drinkService = new DrinkService();
+
     private final Scanner scanner = new Scanner(System.in);
 
     private final List<Restaurant> restaurants = new ArrayList<>();
-    private final List<Dish> dishes = new ArrayList<>();
-    private final List<Drink> drinks = new ArrayList<>();
     private final List<Client> clients = new ArrayList<>();
     private final List<Courier> couriers = new ArrayList<>();
     private final List<Order> orders = new ArrayList<>();
@@ -81,7 +83,7 @@ public class Main {
             if (answer.equals("y")) {
                 break;
             } else if (answer.equals("n")) {
-                System.out.println("\nThank you for using our Food Delivery App!");
+                System.out.println("\nThank you for using our Food Delivery App! Goodbye!");
                 System.exit(0);
             } else {
                 System.out.print("Invalid input. Please type 'y' for yes or 'n' for no:");
@@ -108,28 +110,28 @@ public class Main {
                 RestaurantService.sortRestaurantsByRating(restaurants);
                 break;
             case 6:
-                DishService.displayDishes(dishes);
+                dishService.displayDishes();
                 break;
             case 7:
-                DishService.addDish(dishes);
+                dishService.addDish();
                 break;
             case 8:
-                DishService.updateDish(dishes);
+                dishService.updateDish();
                 break;
             case 9:
-                DishService.deleteDish(dishes);
+                dishService.deleteDish();
                 break;
             case 10:
-                DrinkService.displayDrinks(drinks);
+                drinkService.displayDrinks();
                 break;
             case 11:
-                DrinkService.addDrink(drinks);
+                drinkService.addDrink();
                 break;
             case 12:
-                DrinkService.updateDrink(drinks);
+                drinkService.updateDrink();
                 break;
             case 13:
-                DrinkService.deleteDrink(drinks);
+                drinkService.deleteDrink();
                 break;
             case 14:
                 ClientService.displayClients(clients);
@@ -175,7 +177,7 @@ public class Main {
                 System.out.println("\n[NOT IMPLEMENTED YET] Display all orders for a specific restaurant");
                 break;
             case 27:
-                System.out.println("\nThank you for choosing our app. Goodbye!");
+                System.out.println("\nThank you for using our Food Delivery App! Goodbye!");
                 System.exit(0);
         }
     }
@@ -186,13 +188,13 @@ public class Main {
         do {
             try {
                 option = readInt();
-                if (option < 1 || option > 22) {
+                if (option < 1 || option > 27) {
                     System.out.print("Invalid option! Try again: ");
                 }
             } catch (CustomException exception) {
                 System.out.print("Invalid option! Try again: ");
             }
-        } while (option < 1 || option > 22);
+        } while (option < 1 || option > 27);
 
         return option;
     }

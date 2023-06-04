@@ -34,6 +34,4 @@ public class Dish extends Product{
     public String toString() {
         return "Dish {" + super.toString() + ", ingredients=" + Arrays.toString(ingredients) + ", weight=" + weight + "g}";
     }
-
-
 }
