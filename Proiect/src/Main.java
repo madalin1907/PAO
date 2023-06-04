@@ -16,6 +16,8 @@ public class Main {
             app.showMenu();
             int option = app.readOption();
             app.executeOption(option);
+
+            app.continueOrExit();
         }
     }
 
@@ -30,30 +32,63 @@ public class Main {
 
     private void showMenu() {
         System.out.println("\nWelcome to our Food Delivery App! Please enter a number to choose an option:");
-        System.out.println("1. Display all restaurants.");
-        System.out.println("2. Add a new restaurant.");
-        System.out.println("3. Delete a restaurant.");
-        System.out.println("4. Sort restaurants by rating (descending).");
-        System.out.println("5. Display all dishes.");
-        System.out.println("6. Add a new dish.");
-        System.out.println("7. Delete a dish.");
-        System.out.println("8. Display all drinks.");
-        System.out.println("9. Add a new drink.");
-        System.out.println("10. Delete a drink.");
-        System.out.println("11. Display all clients.");
-        System.out.println("12. Add a new client.");
-        System.out.println("13. Delete a client.");
-        System.out.println("14. Display all couriers.");
-        System.out.println("15. Add a new courier.");
-        System.out.println("16. Delete a courier.");
-        System.out.println("17. Display all orders.");
-        System.out.println("18. Add a new order.");
-        System.out.println("19. Delete an order.");
-        System.out.println("20. Display all orders for a specific client.");
-        System.out.println("21. Display all orders for a specific restaurant.");
-        System.out.println("22. Exit.");
+
+        System.out.println(" 1. Display all restaurants.");
+        System.out.println(" 2. Add a new restaurant.");
+        System.out.println(" 3. Update a restaurant.");
+        System.out.println(" 4. Delete a restaurant.");
+        System.out.println(" 5. Sort restaurants by rating (descending).");
+
+        System.out.println(" 6. Display all dishes.");
+        System.out.println(" 7. Add a new dish.");
+        System.out.println(" 8. Update a dish.");
+        System.out.println(" 9. Delete a dish.");
+
+        System.out.println("10. Display all drinks.");
+        System.out.println("11. Add a new drink.");
+        System.out.println("12. Update a drink.");
+        System.out.println("13. Delete a drink.");
+
+        System.out.println("14. Display all clients.");
+        System.out.println("15. Add a new client.");
+        System.out.println("16. Update a client.");
+        System.out.println("17. Delete a client.");
+
+        System.out.println("18. Display all couriers.");
+        System.out.println("19. Add a new courier.");
+        System.out.println("20. Update a courier.");
+        System.out.println("21. Delete a courier.");
+
+        System.out.println("22. Display all orders.");
+        System.out.println("23. Add a new order.");
+        System.out.println("24. Delete an order.");
+
+        System.out.println("25. Display all orders for a specific client.");
+        System.out.println("26. Display all orders for a specific restaurant.");
+
+        System.out.println("27. Exit.");
+
         System.out.print("Please enter a number:");
     }
+
+
+    public void continueOrExit() {
+        System.out.print("\nDo you want to continue? (Type 'y' for yes or 'n' for no):");
+        scanner.nextLine();
+
+        while (true) {
+            String answer = scanner.nextLine().toLowerCase();
+            if (answer.equals("y")) {
+                break;
+            } else if (answer.equals("n")) {
+                System.out.println("\nThank you for using our Food Delivery App!");
+                System.exit(0);
+            } else {
+                System.out.print("Invalid input. Please type 'y' for yes or 'n' for no:");
+            }
+        }
+    }
+
 
     public void executeOption(int option) {
         switch (option) {
@@ -64,67 +99,82 @@ public class Main {
                 RestaurantService.addRestaurant(restaurants);
                 break;
             case 3:
-                RestaurantService.deleteRestaurant(restaurants);
+                RestaurantService.updateRestaurant(restaurants);
                 break;
             case 4:
-                RestaurantService.sortRestaurantsByRating(restaurants);
+                RestaurantService.deleteRestaurant(restaurants);
                 break;
             case 5:
-                DishService.displayDishes(dishes);
+                RestaurantService.sortRestaurantsByRating(restaurants);
                 break;
             case 6:
-                DishService.addDish(dishes);
+                DishService.displayDishes(dishes);
                 break;
             case 7:
-                DishService.deleteDish(dishes);
+                DishService.addDish(dishes);
                 break;
             case 8:
-                DrinkService.displayDrinks(drinks);
+                DishService.updateDish(dishes);
                 break;
             case 9:
-                DrinkService.addDrink(drinks);
+                DishService.deleteDish(dishes);
                 break;
             case 10:
-                DrinkService.deleteDrink(drinks);
+                DrinkService.displayDrinks(drinks);
                 break;
             case 11:
-                ClientService.displayClients(clients);
+                DrinkService.addDrink(drinks);
                 break;
             case 12:
-                ClientService.addClient(clients);
+                DrinkService.updateDrink(drinks);
                 break;
             case 13:
-                ClientService.deleteClient(clients);
+                DrinkService.deleteDrink(drinks);
                 break;
             case 14:
-                CourierService.displayCouriers(couriers);
+                ClientService.displayClients(clients);
                 break;
             case 15:
-                CourierService.addCourier(couriers);
+                ClientService.addClient(clients);
                 break;
             case 16:
-                CourierService.deleteCourier(couriers);
+                ClientService.updateClient(clients);
                 break;
             case 17:
-                OrderService.displayOrders(orders);
+                ClientService.deleteClient(clients);
                 break;
             case 18:
+                CourierService.displayCouriers(couriers);
+                break;
+            case 19:
+                CourierService.addCourier(couriers);
+                break;
+            case 20:
+                CourierService.updateCourier(couriers);
+                break;
+            case 21:
+                CourierService.deleteCourier(couriers);
+                break;
+            case 22:
+                OrderService.displayOrders(orders);
+                break;
+            case 23:
 //                List<Product> allProducts = new ArrayList<>();
 //                allProducts.addAll(dishes);
 //                allProducts.addAll(drinks);
 //                OrderService.addOrder(orders, clients, couriers, restaurants, allProducts);
                 System.out.println("\n[NOT IMPLEMENTED YET] Add a new order");
                 break;
-            case 19:
+            case 24:
                 System.out.println("\n[NOT IMPLEMENTED YET] Delete an order");
                 break;
-            case 20:
+            case 25:
                 System.out.println("\n[NOT IMPLEMENTED YET] Display all orders for a specific client");
                 break;
-            case 21:
+            case 26:
                 System.out.println("\n[NOT IMPLEMENTED YET] Display all orders for a specific restaurant");
                 break;
-            case 22:
+            case 27:
                 System.out.println("\nThank you for choosing our app. Goodbye!");
                 System.exit(0);
         }

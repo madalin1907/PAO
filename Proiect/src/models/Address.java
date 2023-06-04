@@ -61,11 +61,11 @@ public class Address {
         this.number = number;
     }
 
-    public String getpostalCode() {
+    public String getPostalCode() {
         return postalCode;
     }
 
-    public void setpostalCode(String postalCode) {
+    public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 

@@ -24,6 +24,10 @@ public class DrinkService {
 
         System.out.print("Enter the name of the drink:");
         String name = scanner.nextLine();
+        while (name.isEmpty()) {
+            System.out.print("Invalid input. Please enter a non-empty string:");
+            name = scanner.nextLine();
+        }
 
         System.out.print("Enter the price of the drink:");
         double price;
@@ -43,6 +47,10 @@ public class DrinkService {
 
         System.out.print("Enter the description of the drink:");
         String description = scanner.nextLine();
+        while (description.isEmpty()) {
+            System.out.print("Invalid input. Please enter a non-empty string:");
+            description = scanner.nextLine();
+        }
 
         System.out.print("Is the drink alcoholic? (true/false):");
         boolean isAlcoholic;
@@ -51,7 +59,7 @@ public class DrinkService {
                 isAlcoholic = scanner.nextBoolean();
                 break;
             } catch (Exception e) {
-                System.out.print("Invalid input. Please enter true or false:");
+                System.out.print("Invalid input. Please enter 'true' or 'false':");
                 scanner.nextLine();
             }
         } while (true);
@@ -76,6 +84,102 @@ public class DrinkService {
         Drink drink = new Drink(name, price, description, isAlcoholic, volume);
         drinks.add(drink);
         System.out.println("\nDrink added successfully.");
+    }
+
+    public static void updateDrink(List<Drink> drinks) {
+        if (drinks.isEmpty()) {
+            System.out.println("\nThere are no drinks to update.");
+            return;
+        }
+
+        displayDrinks(drinks);
+        System.out.print("Enter the id of the drink you want to update:");
+        int id;
+        do {
+            try {
+                id = scanner.nextInt();
+                break;
+            }catch (Exception e) {
+                System.out.print("Invalid input. Please enter a number:");
+                scanner.nextLine();
+            }
+        } while (true);
+        scanner.nextLine();
+
+        for (Drink drink : drinks) {
+            if (drink.getId() == id) {
+                System.out.println("\n--Updating drink with id " + id + "--");
+
+                System.out.print("Enter the name of the drink:");
+                String name = scanner.nextLine();
+                while (name.isEmpty()) {
+                    System.out.print("Invalid input. Please enter a non-empty string:");
+                    name = scanner.nextLine();
+                }
+
+                System.out.print("Enter the price of the drink:");
+                double price;
+                do {
+                    try {
+                        price = scanner.nextDouble();
+                        if (price <= 0) {
+                            throw new Exception();
+                        }
+                        break;
+                    } catch (Exception e) {
+                        System.out.print("Invalid input. Please enter a double greater than 0:");
+                        scanner.nextLine();
+                    }
+                } while (true);
+                scanner.nextLine();
+
+                System.out.print("Enter the description of the drink:");
+                String description = scanner.nextLine();
+                while (description.isEmpty()) {
+                    System.out.print("Invalid input. Please enter a non-empty string:");
+                    description = scanner.nextLine();
+                }
+
+                System.out.print("Is the drink alcoholic? (true/false):");
+                boolean isAlcoholic;
+                do {
+                    try {
+                        isAlcoholic = scanner.nextBoolean();
+                        break;
+                    } catch (Exception e) {
+                        System.out.print("Invalid input. Please enter true or false:");
+                        scanner.nextLine();
+                    }
+                } while (true);
+                scanner.nextLine();
+
+                System.out.print("Enter the volume of the drink (milliliters):");
+                int volume;
+                do {
+                    try {
+                        volume = scanner.nextInt();
+                        if (volume <= 0) {
+                            throw new Exception();
+                        }
+                        break;
+                    } catch (Exception e) {
+                        System.out.print("Invalid input. Please enter an integer greater than 0:");
+                        scanner.nextLine();
+                    }
+                } while (true);
+                scanner.nextLine();
+
+                drink.setName(name);
+                drink.setPrice(price);
+                drink.setDescription(description);
+                drink.setIsAlcoholic(isAlcoholic);
+                drink.setVolume(volume);
+                System.out.println("\nDrink updated successfully.");
+                return;
+            }
+        }
+
+        System.out.println("\nDrink not found.");
     }
 
     public static void deleteDrink(List<Drink> drinks) {
