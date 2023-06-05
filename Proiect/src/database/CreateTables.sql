@@ -18,7 +18,7 @@ CREATE TABLE drink (
 );
 
 
-CREATE TABLE Address (
+CREATE TABLE address (
      id INT AUTO_INCREMENT PRIMARY KEY,
      country VARCHAR(255) NOT NULL,
      city VARCHAR(255) NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE Address (
 );
 
 
-CREATE TABLE Client (
+CREATE TABLE client (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     phoneNumber VARCHAR(255) NOT NULL,
@@ -38,11 +38,20 @@ CREATE TABLE Client (
 );
 
 
-CREATE TABLE Courier (
+CREATE TABLE courier (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     phoneNumber VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     rating DOUBLE NOT NULL,
     vehicle VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE restaurant (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    rating DOUBLE NOT NULL,
+    addressId INT NOT NULL,
+    FOREIGN KEY (addressId) REFERENCES Address(id) ON DELETE CASCADE
 );

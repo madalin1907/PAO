@@ -1,10 +1,6 @@
-import exceptions.CustomException;
-
-import models.*;
 import services.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import exceptions.CustomException;
 import java.util.Scanner;
 
 public class Main {
@@ -26,11 +22,9 @@ public class Main {
     DrinkService drinkService = new DrinkService();
     ClientService clientService = new ClientService();
     CourierService courierService = new CourierService();
+    RestaurantService restaurantService = new RestaurantService();
 
     private final Scanner scanner = new Scanner(System.in);
-
-    private final List<Restaurant> restaurants = new ArrayList<>();
-    private final List<Order> orders = new ArrayList<>();
 
     private void showMenu() {
         System.out.println("\nWelcome to our Food Delivery App! Please enter a number to choose an option:");
@@ -39,7 +33,7 @@ public class Main {
         System.out.println(" 2. Add a new restaurant.");
         System.out.println(" 3. Update a restaurant.");
         System.out.println(" 4. Delete a restaurant.");
-        System.out.println(" 5. Sort restaurants by rating (descending).");
+        System.out.println(" 5. Display restaurants sorted by rating (descending).");
 
         System.out.println(" 6. Display all dishes.");
         System.out.println(" 7. Add a new dish.");
@@ -95,19 +89,19 @@ public class Main {
     public void executeOption(int option) {
         switch (option) {
             case 1:
-                RestaurantService.displayRestaurants(restaurants);
+                restaurantService.displayRestaurants();
                 break;
             case 2:
-                RestaurantService.addRestaurant(restaurants);
+                restaurantService.addRestaurant();
                 break;
             case 3:
-                RestaurantService.updateRestaurant(restaurants);
+                restaurantService.updateRestaurant();
                 break;
             case 4:
-                RestaurantService.deleteRestaurant(restaurants);
+                restaurantService.deleteRestaurant();
                 break;
             case 5:
-                RestaurantService.sortRestaurantsByRating(restaurants);
+                restaurantService.displayRestaurantsSortedByRating();
                 break;
             case 6:
                 dishService.displayDishes();

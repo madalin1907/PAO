@@ -1,77 +1,40 @@
-Display all dishes,2023-06-05 00:36:11.624
-Add a new dish,2023-06-05 00:37:16.374
-Display all dishes,2023-06-05 00:37:18.936
-Update a dish,2023-06-05 00:37:24.375
-Display all dishes,2023-06-05 00:37:27.392
-Delete a dish,2023-06-05 00:37:30.974
-Display all dishes,2023-06-05 00:37:33.298
-Delete a dish,2023-06-05 00:37:35.206
-Add a new drink.,2023-06-05 00:40:49.393
-Display all drinks.,2023-06-05 00:40:51.611
-Update a drink.,2023-06-05 00:41:04.928
-Display all drinks.,2023-06-05 00:41:17.354
-Delete a drink.,2023-06-05 00:41:18.909
-Add a new drink.,2023-06-05 00:41:26.368
-Display all drinks.,2023-06-05 00:41:30.859
-Add a new dish,2023-06-05 00:42:14.977
-Add a new dish,2023-06-05 00:42:20.558
-Display all dishes,2023-06-05 00:42:25.113
-Delete a dish,2023-06-05 00:42:27.66
-Add a new dish,2023-06-05 00:42:34.637
-Display all dishes,2023-06-05 00:42:52.119
-Display all dishes,2023-06-05 00:43:26.635
-Delete a dish,2023-06-05 00:43:27.997
-Display all dishes,2023-06-05 00:43:31.632
-Delete a dish,2023-06-05 00:43:32.778
-Add a new dish,2023-06-05 00:43:46.584
-Add client,2023-06-05 01:22:55.399
-Add client,2023-06-05 01:23:20.388
-Add client,2023-06-05 01:42:02.444
-Add client,2023-06-05 01:42:12.343
-Display clients,2023-06-05 01:42:16.93
-Display clients,2023-06-05 01:42:24.307
-Display clients,2023-06-05 01:42:38.988
-Update client,2023-06-05 01:42:48.548
-Display clients,2023-06-05 01:42:51.507
-Display clients,2023-06-05 01:49:10.755
-Delete client,2023-06-05 01:49:13.509
-Add client,2023-06-05 01:51:44.2
-Display clients,2023-06-05 01:52:02.558
-Display clients,2023-06-05 01:52:59.581
-Display clients,2023-06-05 01:53:07.391
-Update client,2023-06-05 01:53:13.381
-Display clients,2023-06-05 01:53:45.218
-Display clients,2023-06-05 01:53:49.544
-Delete client,2023-06-05 01:53:51.039
-Add client,2023-06-05 01:56:35.988
-Display clients,2023-06-05 01:57:40.305
-Display clients,2023-06-05 01:57:48.134
-Update client,2023-06-05 01:57:55.675
-Display clients,2023-06-05 01:58:09.829
-Delete client,2023-06-05 01:58:11.103
-Add client,2023-06-05 02:29:06.494
-Display clients,2023-06-05 02:29:13.163
-Update client,2023-06-05 02:29:17.982
-Add client,2023-06-05 02:29:28.159
-Display clients,2023-06-05 02:29:30.955
-Display clients,2023-06-05 02:29:35.327
-Delete client,2023-06-05 02:29:37.502
-Display clients,2023-06-05 02:29:40.733
-Delete client,2023-06-05 02:29:41.492
-Add a new courier,2023-06-05 02:48:42.615
-Display all couriers,2023-06-05 02:49:38.126
-Display all couriers,2023-06-05 02:56:50.601
-Add a new courier,2023-06-05 02:56:59.637
-Display all couriers,2023-06-05 02:57:04.587
-Update a courier,2023-06-05 02:57:15.336
-Display all couriers,2023-06-05 02:57:20.116
-Delete a courier,2023-06-05 02:57:26.529
-Display all couriers,2023-06-05 02:57:45.185
-Delete a courier,2023-06-05 02:57:46.644
-Add a new courier,2023-06-05 02:57:52.282
-Display all couriers,2023-06-05 02:58:06.826
-Delete a courier,2023-06-05 02:58:08.889
-Add a new courier,2023-06-05 02:59:27.578
-Display all couriers,2023-06-05 02:59:33.882
-Display all couriers,2023-06-05 02:59:40.227
-Update a courier,2023-06-05 02:59:50.338
+Add a new restaurant,2023-06-05 04:00:29.689
+Add a new restaurant,2023-06-05 04:00:36.76
+Display all restaurants,2023-06-05 04:00:38.771
+Display all restaurants,2023-06-05 04:00:44.232
+Update a restaurant,2023-06-05 04:00:50.838
+Display all restaurants,2023-06-05 04:01:02.793
+Display restaurants sorted by rating,2023-06-05 04:01:09.839
+Display all restaurants,2023-06-05 04:01:15.633
+Delete a restaurant,2023-06-05 04:01:18.579
+Display restaurants sorted by rating,2023-06-05 04:01:25.128
+Add a new dish,2023-06-05 04:01:41.715
+Display all dishes,2023-06-05 04:01:43.939
+Add a new dish,2023-06-05 04:01:53.237
+Display all dishes,2023-06-05 04:01:57.237
+Delete a dish,2023-06-05 04:02:00.422
+Display all dishes,2023-06-05 04:02:05.124
+Update a dish,2023-06-05 04:02:16.078
+Display all dishes,2023-06-05 04:02:19.231
+Add a new drink.,2023-06-05 04:03:30.502
+Display all drinks.,2023-06-05 04:03:40.308
+Update a drink.,2023-06-05 04:03:51.984
+Display all drinks.,2023-06-05 04:03:56.538
+Display all drinks.,2023-06-05 04:04:04.001
+Delete a drink.,2023-06-05 04:04:05.128
+Add a new drink.,2023-06-05 04:04:18.299
+Display all drinks.,2023-06-05 04:04:21.056
+Add a new client,2023-06-05 04:04:56.995
+Display all clients,2023-06-05 04:05:07.879
+Update a client,2023-06-05 04:05:11.642
+Display all clients,2023-06-05 04:05:26.693
+Update a client,2023-06-05 04:05:32.409
+Display all clients,2023-06-05 04:05:43.079
+Delete a client,2023-06-05 04:05:44.658
+Add a new courier,2023-06-05 04:05:54.178
+Display all couriers,2023-06-05 04:05:57.801
+Add a new courier,2023-06-05 04:06:04.779
+Display all couriers,2023-06-05 04:06:08.738
+Update a courier,2023-06-05 04:06:14.45
+Display all couriers,2023-06-05 04:06:18.083
+Delete a courier,2023-06-05 04:06:19.304

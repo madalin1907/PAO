@@ -35,8 +35,9 @@ public class ClientRepository {
                 try (PreparedStatement statement2 = DBConnection.getInstance().prepareStatement(sqlCommand2)) {
                     statement2.setInt(1, addressId);
                     var result2 = statement2.executeQuery();
+
                     while (result2.next()) {
-                        System.out.println("Client address: " + result2.getString("country") + ", " + result2.getString("city") + ", " + result2.getString("street") + ", " + result2.getString("number") + ", " + result2.getString("postalCode"));
+                        System.out.println("Address: " + result2.getString("country") + ", " + result2.getString("city") + ", " + result2.getString("street") + ", " + result2.getString("number") + ", " + result2.getString("postalCode"));
                     }
                 } catch (Exception e) {
                     System.out.println("Something went wrong when trying to access addresses: " + e.getMessage());
@@ -44,7 +45,7 @@ public class ClientRepository {
                 }
             }
 
-            auditService.addLog("Display clients");
+            auditService.addLog("Display all clients");
             return true;
         } catch (Exception e) {
             System.out.println("Something went wrong when trying to access clients: " + e.getMessage());
@@ -79,7 +80,7 @@ public class ClientRepository {
                 email = scanner.nextLine();
             }
 
-            System.out.println("Enter the address id of the client:");
+            System.out.println("Enter the address of the client:");
             System.out.print("Enter the country of the client:");
             String country = scanner.nextLine();
             while (country.isEmpty()) {
@@ -134,7 +135,6 @@ public class ClientRepository {
                     throw new SQLException("Creating address failed, no ID obtained.");
                 }
 
-                // set the addressId in the client statement
                 statement.setString(1, name);
                 statement.setString(2, phoneNumber);
                 statement.setString(3, email);
@@ -142,7 +142,7 @@ public class ClientRepository {
 
                 statement.executeUpdate();
                 System.out.println("Client added successfully!");
-                auditService.addLog("Add client");
+                auditService.addLog("Add a new client");
 
             } catch (Exception e) {
                 System.out.println("Something went wrong when trying to add a new address: " + e.getMessage());
@@ -279,7 +279,7 @@ public class ClientRepository {
 
             statement.executeUpdate();
             System.out.println("Client updated successfully!");
-            auditService.addLog("Update client");
+            auditService.addLog("Update a client");
 
         } catch (Exception e) {
             System.out.println("Something went wrong when trying to update a client: " + e.getMessage());
@@ -332,7 +332,7 @@ public class ClientRepository {
             statement.setInt(1, id);
             statement.executeUpdate();
             System.out.println("Client deleted successfully!");
-            auditService.addLog("Delete client");
+            auditService.addLog("Delete a client");
 
             // delete the address
             String sqlCommand3 = "DELETE FROM address WHERE id = ?";

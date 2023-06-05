@@ -3,7 +3,7 @@ package services;
 import repositories.ClientRepository;
 
 public class ClientService {
-ClientRepository clientRepository = new ClientRepository();
+    ClientRepository clientRepository = new ClientRepository();
 
     public void displayClients() {
         System.out.println("\nYou chose \"Display all clients\" option.");
