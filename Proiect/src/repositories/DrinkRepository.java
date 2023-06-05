@@ -1,12 +1,14 @@
 package repositories;
 
 import database.DBConnection;
+import services.AuditService;
 
 import java.sql.PreparedStatement;
 import java.util.Scanner;
 
 public class DrinkRepository {
     private static final Scanner scanner = new Scanner(System.in);
+    private static final AuditService auditService = new AuditService();
 
     public boolean displayDrinks() {
         String sqlCommand = "SELECT * FROM drink";
@@ -27,12 +29,14 @@ public class DrinkRepository {
                 System.out.println("Volume: " + result.getInt("volume") + "ml");
             }
 
+            auditService.addLog("Display all drinks.");
             return true;
         } catch (Exception e) {
             System.out.println("Something went wrong when trying to access drinks: " + e.getMessage());
             return false;
         }
     }
+
 
     public void addDrink() {
         String sqlCommand = "INSERT INTO drink (name, price, description, isAlcoholic, volume) VALUES (?, ?, ?, ?, ?)";
@@ -108,6 +112,7 @@ public class DrinkRepository {
 
             statement.executeUpdate();
             System.out.println("\nDrink added successfully!");
+            auditService.addLog("Add a new drink.");
 
         } catch (Exception e) {
             System.out.println("Something went wrong when trying to add a new drink: " + e.getMessage());
@@ -223,6 +228,7 @@ public class DrinkRepository {
 
             statement.executeUpdate();
             System.out.println("\nDrink updated successfully!");
+            auditService.addLog("Update a drink.");
 
         } catch (Exception e) {
             System.out.println("Something went wrong when trying to update a dish: " + e.getMessage());
@@ -271,6 +277,15 @@ public class DrinkRepository {
 
             statement.executeUpdate();
             System.out.println("\nDrink deleted successfully!");
+            auditService.addLog("Delete a drink.");
+
+            // reset the auto increment
+            String sqlCommand3 = "ALTER TABLE drink AUTO_INCREMENT = 1";
+            try (PreparedStatement statement3 = DBConnection.getInstance().prepareStatement(sqlCommand3)) {
+                statement3.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Something went wrong when trying to reset the auto increment: " + e.getMessage());
+            }
 
         } catch (Exception e) {
             System.out.println("Something went wrong when trying to delete a drink: " + e.getMessage());

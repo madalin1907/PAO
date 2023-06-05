@@ -16,3 +16,33 @@ CREATE TABLE drink (
     isAlcoholic BOOLEAN NOT NULL,
     volume INT NOT NULL
 );
+
+
+CREATE TABLE Address (
+     id INT AUTO_INCREMENT PRIMARY KEY,
+     country VARCHAR(255) NOT NULL,
+     city VARCHAR(255) NOT NULL,
+     street VARCHAR(255) NOT NULL,
+     number VARCHAR(255) NOT NULL,
+     postalCode VARCHAR(255)
+);
+
+
+CREATE TABLE Client (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    phoneNumber VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    addressId INT NOT NULL,
+    FOREIGN KEY (addressId) REFERENCES Address(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE Courier (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    phoneNumber VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    rating DOUBLE NOT NULL,
+    vehicle VARCHAR(255) NOT NULL
+);

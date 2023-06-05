@@ -24,12 +24,12 @@ public class Main {
 
     DishService dishService = new DishService();
     DrinkService drinkService = new DrinkService();
+    ClientService clientService = new ClientService();
+    CourierService courierService = new CourierService();
 
     private final Scanner scanner = new Scanner(System.in);
 
     private final List<Restaurant> restaurants = new ArrayList<>();
-    private final List<Client> clients = new ArrayList<>();
-    private final List<Courier> couriers = new ArrayList<>();
     private final List<Order> orders = new ArrayList<>();
 
     private void showMenu() {
@@ -61,14 +61,14 @@ public class Main {
         System.out.println("20. Update a courier.");
         System.out.println("21. Delete a courier.");
 
-        System.out.println("22. Display all orders.");
-        System.out.println("23. Add a new order.");
-        System.out.println("24. Delete an order.");
+        System.out.println("22. [NOT IMPLEMENTED YET] Display all orders.");
+        System.out.println("23. [NOT IMPLEMENTED YET] Add a new order.");
+        System.out.println("24. [NOT IMPLEMENTED YET] Update an order.");
+        System.out.println("25. [NOT IMPLEMENTED YET] Delete an order.");
+        System.out.println("26. [NOT IMPLEMENTED YET] Display all orders for a specific client.");
+        System.out.println("27. [NOT IMPLEMENTED YET] Display all orders for a specific restaurant.");
 
-        System.out.println("25. Display all orders for a specific client.");
-        System.out.println("26. Display all orders for a specific restaurant.");
-
-        System.out.println("27. Exit.");
+        System.out.println("28. Exit.");
 
         System.out.print("Please enter a number:");
     }
@@ -134,49 +134,48 @@ public class Main {
                 drinkService.deleteDrink();
                 break;
             case 14:
-                ClientService.displayClients(clients);
+                clientService.displayClients();
                 break;
             case 15:
-                ClientService.addClient(clients);
+                clientService.addClient();
                 break;
             case 16:
-                ClientService.updateClient(clients);
+                clientService.updateClient();
                 break;
             case 17:
-                ClientService.deleteClient(clients);
+                clientService.deleteClient();
                 break;
             case 18:
-                CourierService.displayCouriers(couriers);
+                courierService.displayCouriers();
                 break;
             case 19:
-                CourierService.addCourier(couriers);
+                courierService.addCourier();
                 break;
             case 20:
-                CourierService.updateCourier(couriers);
+                courierService.updateCourier();
                 break;
             case 21:
-                CourierService.deleteCourier(couriers);
+                courierService.deleteCourier();
                 break;
             case 22:
-                OrderService.displayOrders(orders);
+                System.out.println("\n[NOT IMPLEMENTED YET] Display all orders");
                 break;
             case 23:
-//                List<Product> allProducts = new ArrayList<>();
-//                allProducts.addAll(dishes);
-//                allProducts.addAll(drinks);
-//                OrderService.addOrder(orders, clients, couriers, restaurants, allProducts);
                 System.out.println("\n[NOT IMPLEMENTED YET] Add a new order");
                 break;
             case 24:
-                System.out.println("\n[NOT IMPLEMENTED YET] Delete an order");
+                System.out.println("\n[NOT IMPLEMENTED YET] Update an order");
                 break;
             case 25:
-                System.out.println("\n[NOT IMPLEMENTED YET] Display all orders for a specific client");
+                System.out.println("\n[NOT IMPLEMENTED YET] Delete an order");
                 break;
             case 26:
-                System.out.println("\n[NOT IMPLEMENTED YET] Display all orders for a specific restaurant");
+                System.out.println("\n[NOT IMPLEMENTED YET] Display all orders for a specific client");
                 break;
             case 27:
+                System.out.println("\n[NOT IMPLEMENTED YET] Display all orders for a specific restaurant");
+                break;
+            case 28:
                 System.out.println("\nThank you for using our Food Delivery App! Goodbye!");
                 System.exit(0);
         }
@@ -188,13 +187,13 @@ public class Main {
         do {
             try {
                 option = readInt();
-                if (option < 1 || option > 27) {
+                if (option < 1 || option > 28) {
                     System.out.print("Invalid option! Try again: ");
                 }
             } catch (CustomException exception) {
                 System.out.print("Invalid option! Try again: ");
             }
-        } while (option < 1 || option > 27);
+        } while (option < 1 || option > 28);
 
         return option;
     }

@@ -1,5 +1,6 @@
 package repositories;
 
+import services.AuditService;
 import database.DBConnection;
 
 import java.sql.PreparedStatement;
@@ -7,6 +8,7 @@ import java.util.Scanner;
 
 public class DishRepository {
     private static final Scanner scanner = new Scanner(System.in);
+    private static final AuditService auditService = new AuditService();
 
     public boolean displayDishes() {
         String sqlCommand = "SELECT * FROM dish";
@@ -33,6 +35,7 @@ public class DishRepository {
                 System.out.println("\nWeight: " + result.getInt("weight"));
             }
 
+            auditService.addLog("Display all dishes");
             return true;
         } catch (Exception e) {
             System.out.println("Something went wrong when trying to access dishes: " + e.getMessage());
@@ -127,6 +130,7 @@ public class DishRepository {
 
             statement.executeUpdate();
             System.out.println("Successfully added a new dish!");
+            auditService.addLog("Add a new dish");
         } catch (Exception e) {
             System.out.println("Something went wrong when trying to add a new dish: " + e.getMessage());
         }
@@ -253,6 +257,7 @@ public class DishRepository {
 
             statement.executeUpdate();
             System.out.println("Successfully updated a dish!");
+            auditService.addLog("Update a dish");
 
         } catch (Exception e) {
             System.out.println("Something went wrong when trying to update a dish: " + e.getMessage());
@@ -301,6 +306,15 @@ public class DishRepository {
 
             statement.executeUpdate();
             System.out.println("Successfully deleted a dish!");
+            auditService.addLog("Delete a dish");
+
+            // Reset the auto increment
+            String sqlCommand3 = "ALTER TABLE dish AUTO_INCREMENT = 1";
+            try (PreparedStatement statement3 = DBConnection.getInstance().prepareStatement(sqlCommand3)) {
+                statement3.executeUpdate();
+            } catch (Exception e) {
+                System.out.println("Something went wrong when trying to reset the auto increment: " + e.getMessage());
+            }
 
         } catch (Exception e) {
             System.out.println("Something went wrong when trying to delete the dish: " + e.getMessage());
