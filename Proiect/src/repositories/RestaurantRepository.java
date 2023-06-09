@@ -373,7 +373,7 @@ String sqlCommand = "SELECT * FROM restaurant ORDER BY rating DESC";
                 } catch (Exception e) {
                     System.out.println("Something went wrong when trying to access addresses: " + e.getMessage());
                 }
-            };
+            }
 
             auditService.addLog("Display restaurants sorted by rating");
 
